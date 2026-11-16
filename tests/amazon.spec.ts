@@ -7,7 +7,7 @@ test('Search laptop', async ({ page }) => {
     
 
     await searchBox.fill('Laptop');
-    await page.waitForTimeout(5000);
+    await page.waitForLoadState('load');
 });
 
 
