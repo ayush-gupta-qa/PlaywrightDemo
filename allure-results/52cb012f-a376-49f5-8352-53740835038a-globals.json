@@ -1,0 +1,1 @@
+{"attachments":[],"errors":[{"message":"beforeEach hook failed: Test timeout of 120000ms exceeded while running \"beforeEach\" hook.","trace":"Test timeout of 120000ms exceeded while running \"beforeEach\" hook.\n    at C:\\Users\\JSC\\Desktop\\Playwright\\tests\\pim.spec.ts:12:10","status":"broken","timestamp":1794655008052}]}

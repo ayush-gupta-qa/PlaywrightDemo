@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    "username": "Admin",
+    "password": "admin123",
+    "expectedUrl": "dashboard"
+  },
+  {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    "username": "Admin1",
+    "password": "wrong123",
+    "expectedUrl": "login"
+  },
+  {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    "username": "Test",
+    "password": "test123",
+    "expectedUrl": "login"
+  }
+]
