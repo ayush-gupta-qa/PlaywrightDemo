@@ -20,7 +20,7 @@ test("Single user login test from json", async ({ page }) => {
 });
 
 users.forEach((user) => {
-    test.only(`Multiple users login from json: ${user.username}`, async ({ page }) => {
+    test(`Multiple users login from json: ${user.username}`, async ({ page }) => {
 
         console.log(`Username: ${user.username}`);
         console.log(`Password: ${user.password}`);
