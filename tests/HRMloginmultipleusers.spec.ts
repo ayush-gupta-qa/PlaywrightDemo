@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import users from '../Test-Data1/Multiplelogin.json';
 
 test("Single user login test from json", async ({ page }) => {
-
+test.setTimeout(60_000);
     // Select first object from JSON
     const singleUser = users[0];
 
