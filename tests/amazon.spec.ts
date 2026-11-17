@@ -8,7 +8,13 @@ test('Search laptop', async ({ page }) => {
 
     await searchBox.fill('Laptop');
     await page.waitForLoadState('load');
-    console.log("Hello shivam");
+    console.log('ayush');
+    console.log('ayush');
+    console.log('ayush');
+    console.log('ayush');
+    console.log('ayush');
+    console.log('ayush');
+    console.log('queen')
 });
 
 
