@@ -14,7 +14,7 @@ test('Search laptop', async ({ page }) => {
     console.log('ayush');
     console.log('ayush');
     console.log('ayush');
-    console.log('queen')
+    console.log('bhaj lo ram ram');
 });
 
 
