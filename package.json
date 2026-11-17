@@ -11,14 +11,24 @@
     "report:single": "npx allure generate allure-results --clean --single-file -o allure-report"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.64.0",
+    "@playwright/test": "^1.65.1",
     "@types/node": "^26.6.6",
     "allure-commandline": "^2.46.1",
     "allure-playwright": "^3.14.0",
     "typescript": "^7.0.2"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayush-gupta-qa/PlaywrightDemo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayush-gupta-qa/PlaywrightDemo/issues"
+  },
+  "homepage": "https://github.com/ayush-gupta-qa/PlaywrightDemo#readme"
 }
