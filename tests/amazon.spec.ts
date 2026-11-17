@@ -8,6 +8,10 @@ test('Search laptop', async ({ page }) => {
 
     await searchBox.fill('Laptop');
     await page.waitForLoadState('load');
+    console.log("aayush");
+    console.log("aayush");
+    console.log("aayush");
+    console.log("aayush");
 });
 
 
