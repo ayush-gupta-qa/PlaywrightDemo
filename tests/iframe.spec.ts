@@ -20,7 +20,7 @@ import path from 'path';
     await expect(editorbody).toHaveText('This is an example of handling iframe using frameLocator in Playwright.');
 });
 
-  test.only('file upload example', async ({ page }) => {
+  test('file upload example', async ({ page }) => {
   // Navigate to file upload demo page
     await page.goto('https://the-internet.herokuapp.com/upload');
     await page.waitForLoadState('networkidle');
