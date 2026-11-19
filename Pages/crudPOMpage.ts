@@ -29,7 +29,7 @@ export class crudPOMpage{
    {
        this.page=page;
        this.adminTabLoc=page.getByText('Admin', { exact: true });
-       this.addButton=page.locator('textbox'),{name:'button'};
+       this.addButton = page.getByRole('button', { name: 'Add' });
        this.Userrole=page.locator("//label[text()='User Role']//following::div[1]");
        this.selectuserrole=page.locator("(//span[text()='Admin'])[2]");
        this.status=page.locator("//label[text()='Status']//following::div[1]");
