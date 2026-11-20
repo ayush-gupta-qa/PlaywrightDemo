@@ -4,7 +4,7 @@ import { Adminpage } from '../Pages/Adminpage';
 import { PIMpage } from '../Pages/PIMpage';
 
 test.describe('Left Panel POM Tests - Reusing Auth State', () => {
-  let leftPanelPage: Leftpanelpage;
+  let leftPanelPage: Leftpanelpage; 
 
   test.beforeEach(async ({ page }) => {
     // Session is already authenticated via storageState (.auth/user.json)
