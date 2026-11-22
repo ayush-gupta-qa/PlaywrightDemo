@@ -6,10 +6,16 @@ export class Recruitmentpage {
    readonly addButton: Locator;
    readonly firstname: Locator;
    readonly lastname: Locator;
-   readonly vacancydropdown: Locator;
-   readonly vacancyoption: Locator;
    readonly emailaddress: Locator;
    readonly savebutton: Locator;
+   readonly candidatename: Locator;
+   readonly selectcandidatename: Locator;
+   readonly searchbutton: Locator;
+   readonly editbutton: Locator;
+   readonly togglebutton: Locator;
+   readonly middlename: Locator;
+   readonly saveButton: Locator;
+
 
    constructor(page : Page)
    {
@@ -18,10 +24,15 @@ export class Recruitmentpage {
        this.addButton=page.getByRole('button', { name: ' Add ' });
        this.firstname=page.getByPlaceholder('First Name');
        this.lastname=page.getByPlaceholder('Last Name');
-       this.vacancydropdown=page.locator("//label[text()='Vacancy']//following::div[1]");
-       this.vacancyoption=page.locator('(//div[contains(@class,"oxd-select-option")])[2]')
        this.emailaddress=page.getByPlaceholder('Type here').nth(0);
        this.savebutton=page.getByRole('button', { name: ' Save ' });
+       this.candidatename=page.getByPlaceholder('Type for hints...').nth(0);
+       this.selectcandidatename=page.locator("//span[normalize-space()='Ayush Gupta']");
+       this.searchbutton=page.getByRole('button', { name: ' Search ' });
+       this.editbutton=page.locator(".oxd-icon.bi-eye-fill");
+       this.togglebutton=page.locator('input[type="checkbox"] + span').nth(0);
+       this.middlename=page.getByPlaceholder('Middle Name');
+       this.saveButton=page.getByRole('button', { name: ' Save ' });
    }
    async clickOnrecruitment(){
      await this.recruitmenttab.click();
@@ -38,11 +49,6 @@ export class Recruitmentpage {
      await this.lastname.fill(lastname);
      
    }
-   async selectVacancy(){
-     await this.vacancydropdown.click();
-     await this.vacancyoption.click();
-     await this.page.waitForLoadState('domcontentloaded');
-   }
    async enterEmailAddress(emailaddress:string){
      await this.emailaddress.fill(emailaddress);
    }
@@ -50,4 +56,27 @@ export class Recruitmentpage {
      await this.savebutton.click();
      await this.page.waitForTimeout(5000);
    }
+   async enterCandidateName(candidatename:string){
+     await this.candidatename.fill(candidatename);
+     await this.page.waitForTimeout(5000);
+     await this.selectcandidatename.click();
+   }
+   async clickOnSearchbutton(){
+     await this.searchbutton.click();
+     await this.page.waitForLoadState('domcontentloaded');
+   }
+   async clickOnEditButton(){
+     await this.editbutton.click();
+    }
+   async clickOnToggleButton(){
+     await this.togglebutton.click();
+    }
+   async enterMiddleName(middlename:string){
+     await this.middlename.fill(middlename);
+     await this.page.waitForLoadState('load');
+    }
+   async clickOnSaveButton(){
+     await this.saveButton.click();
+     await this.page.waitForLoadState('load');
+    }
 }

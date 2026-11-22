@@ -12,14 +12,21 @@ test.describe.serial('Recruitment Module', () => {
         await recruitmentpage.clickOnrecruitment();
       });
 
-// 1. Add Recruitment
     test('1. Add Recruitment', async ({ page }) => {
 
         await recruitmentpage.clickOnaddButton();
         await recruitmentpage.enterFirstName('Ayush');
         await recruitmentpage.enterLastName('Gupta');
-        await recruitmentpage.selectVacancy();
         await recruitmentpage.enterEmailAddress('abc@gmail.com');
         await recruitmentpage.clickOnsavebutton();
+    });
+    test('2. Read and Edit Recruitment', async ({ page }) => {
+
+        await recruitmentpage.enterCandidateName('Ayush');
+        await recruitmentpage.clickOnSearchbutton();
+        await recruitmentpage.clickOnEditButton();
+        await recruitmentpage.clickOnToggleButton();
+        await recruitmentpage.enterMiddleName('kumar');
+        await recruitmentpage.clickOnSaveButton();
     });
 });
