@@ -1,12 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
+import { loadEnvConfig } from './Fixtures/envConfig';
 
 /**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
+ * Read environment variables from multiple env files (.env.qa, .env.dev, .env.staging, .env.prod, or .env)
+ * Select environment by passing ENV: e.g. ENV=qa npm test, ENV=dev npm test
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+loadEnvConfig();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -32,6 +31,7 @@ export default defineConfig({
 ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    baseURL: process.env.BASE_URL || 'https://opensource-demo.orangehrmlive.com',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',                  // Automatically attached to Allure
     video: 'retain-on-failure',                     // Automatically attached to Allure
@@ -49,11 +49,10 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: '.auth/user.json', // <-- Reuses saved auth state
+        storageState: '.auth/user.json',
       },
-      dependencies: ['setup'],         // <-- Guarantees setup runs first
+      dependencies: ['setup'],
     },
-
 
     // {
     //   name: 'firefox',

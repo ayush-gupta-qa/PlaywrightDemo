@@ -6,11 +6,15 @@ const authFile = '.auth/user.json';
 setup('authenticate', async ({ page }) => {
   setup.setTimeout(60000);
 
-  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+  const baseUrl = process.env.BASE_URL || 'https://opensource-demo.orangehrmlive.com';
+  const username = process.env.ADMIN_USERNAME || 'Admin';
+  const password = process.env.ADMIN_PASSWORD || 'admin123';
+
+  await page.goto(`${baseUrl}/web/index.php/auth/login`);
 
   const hrmLoginPage = new HRMloginpage(page);
-  await hrmLoginPage.enterUserName('Admin');
-  await hrmLoginPage.enterPassword('admin123');
+  await hrmLoginPage.enterUserName(username);
+  await hrmLoginPage.enterPassword(password);
   await hrmLoginPage.clicksubmitButton();
   await hrmLoginPage.dbPageVisible();
 

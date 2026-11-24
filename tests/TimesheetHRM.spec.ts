@@ -1,41 +1,70 @@
-
 import { test, expect } from '@playwright/test';
 import { Leftpanelpage } from '../Pages/Leftpanelpage';
 import { Timesheetpage } from '../Pages/Timesheetpage';
+import * as allure from 'allure-js-commons';
 
-test.describe.serial('Timesheet module', () => {
+test.describe('Timesheet module', () => {
 
-    let timesheetPage: Timesheetpage;
-    let leftPanelPage: Leftpanelpage;
+    test.setTimeout(120000);
 
-    // BEFORE EACH
-    test.beforeEach(async ({ page }) => {
+    test('Verify Timesheet operations', async ({ page }) => {
 
-        await page.goto(
-            'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
-        );
+        // Allure metadata
+        await allure.epic('Employee Management');
+        await allure.feature('TIME');
+        await allure.story('Verify Timesheet Operations');
+        await allure.severity('critical');
+        await allure.owner('Megha Lonare');
 
-        await page.waitForLoadState('domcontentloaded');
+        const timesheetPage = new Timesheetpage(page);
+        const leftPanelPage = new Leftpanelpage(page);
 
-        timesheetPage = new Timesheetpage(page);
-        leftPanelPage = new Leftpanelpage(page);
+        // STEP 1 - Navigate to HRM
+        await test.step('Step 1 - Navigate to HRM login page', async () => {
 
-        await leftPanelPage.clickOnTime();
-    });
+            await page.goto(
+                'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
+            );
 
-    // TC01
-    test('TC01 - Verify Timesheet page opens', async ({ page }) => {
+            await page.waitForLoadState('domcontentloaded');
 
-        await expect(page).toHaveURL(/time\/viewEmployeeTimesheet/);
+            console.log('HRM application opened successfully');
+        });
 
-        console.log('Current URL:', page.url());
-        console.log('Page title:', await page.title());
-    });
+        // STEP 2 - Open Timesheet
+        await test.step('Step 2 - Click on Time module', async () => {
 
-    // TC02
-    test('TC02 - Verify Timesheet heading', async ({ page }) => {
+            await leftPanelPage.clickOnTime();
 
-        await timesheetPage.enterEmployeeName('a');
+            console.log('Time module clicked successfully');
+        });
+
+        // TC01 - Verify Timesheet page
+        await test.step('TC01 - Verify Timesheet page opens', async () => {
+
+            await expect(page).toHaveURL(/time\/viewEmployeeTimesheet/);
+
+            console.log('Current URL:', page.url());
+            console.log('Page title:', await page.title());
+
+            console.log('Timesheet page opened successfully');
+        });
+
+        // TC02 - Search employee
+        await test.step('TC02 - Search employee in Timesheet', async () => {
+
+            await timesheetPage.enterEmployeeName('a');
+
+            console.log('Employee name entered successfully');
+        });
+
+        // TC03 - Click View button
+        await test.step('TC03 - Click View button and verify action', async () => {
+
+            await timesheetPage.clickView();
+
+            console.log('View button clicked successfully');
+        });
 
     });
 

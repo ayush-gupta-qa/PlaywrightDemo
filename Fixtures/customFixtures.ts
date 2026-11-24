@@ -3,14 +3,17 @@ import { Leftpanelpage } from '../Pages/Leftpanelpage';
 import { Adminpage } from '../Pages/Adminpage';
 import { PIMpage } from '../Pages/PIMpage';
 import { Leave } from '../Pages/Leavepage';
-import {Recruitmentpage} from '../Pages/Recruitmentpage';
+import { Leavepage1 } from '../Pages/Leavepage1';
+import { Timesheetpage } from '../Pages/Timesheetpage';
+
 
 type MyFixtures = {
   leftPanelPage: Leftpanelpage;
   adminPage: Adminpage;
   pimPage: PIMpage;
   leavePage: Leave;
-  recruitmentpage: Recruitmentpage;
+  leavePage1:Leavepage1;
+  timesheetpage:Timesheetpage;
   dashboardInit: void;
 };
 
@@ -18,7 +21,8 @@ export const test = baseTest.extend<MyFixtures>({
   // Auto fixture: navigates to dashboard before tests run
   dashboardInit: [
     async ({ page }, use) => {
-      await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index');
+      const baseUrl = process.env.BASE_URL || 'https://opensource-demo.orangehrmlive.com';
+      await page.goto(`${baseUrl}/web/index.php/dashboard/index`);
       await page.waitForLoadState('networkidle');
       await use();
     },
@@ -41,9 +45,11 @@ export const test = baseTest.extend<MyFixtures>({
   leavePage: async ({ page }, use) => {
     await use(new Leave(page));
   },
-  
-  recruitmentpage: async ({ page }, use) => {
-     await use (new Recruitmentpage(page));
+  leavePage1: async({page}, use)=>{
+    await use(new Leavepage1(page));
+  },
+  timesheetpage:async({page},use)=>{
+    await use(new Timesheetpage(page));
   },
 });
 
