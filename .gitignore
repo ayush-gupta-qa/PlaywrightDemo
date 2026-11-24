@@ -16,3 +16,7 @@ playwright-report/
 # Allure reports
 allure-results/
 allure-report/
+
+# Environment files
+.env
+.env.*

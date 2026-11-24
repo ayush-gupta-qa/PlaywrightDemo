@@ -15,6 +15,10 @@ export class Leavepage1{
     readonly selctUnit:Locator;
     readonly selectSubUnit:Locator;
     readonly clickOnSearchbtn:Locator;
+    readonly assignLeaveTab:Locator;
+    readonly assignButton:Locator
+    readonly assignLeaveType:Locator;
+    readonly myLeaveTab:Locator;
     constructor(page:Page){
         this.page=page;
         this.leaveTabLoc = page.getByRole('link', { name: 'Leave' });
@@ -25,12 +29,16 @@ export class Leavepage1{
         this.showLeave=page.locator("(//div[@class='oxd-select-text-input'])[1]");
         this.selectShowLeave=page.locator("//span[text()='Taken']");
         this.LeaveType=page.locator("(//div[@class='oxd-select-text-input'])[2]");
+        this.assignLeaveType=page.locator("(//div[@class='oxd-select-text-input'])[1]");
         this.selectLeaveType1=page.locator("//span[text()='CAN - Bereavement']");
         this.clickEmployee=page.locator("//label[text()='Employee Name']//following::input[1]");
         this.selectemployeename=page.locator("(//div[@role='option'])[1]");
         this.selctUnit=page.locator("(//div[@class='oxd-select-text-input'])[3]");
         this.selectSubUnit=page.locator("//span[text()='Administration']");
         this.clickOnSearchbtn=page.locator("//button[ normalize-space()='Search']");
+        this.assignLeaveTab=page.locator("//a [text()='Assign Leave']");
+        this.assignButton=page.locator("//button[normalize-space()='Assign']");
+        this.myLeaveTab=page.locator("//a[text()='My Leave']");
     }
     async clickOnLeftTab(){
         await this.leaveTabLoc.click();
@@ -64,6 +72,17 @@ export class Leavepage1{
     async selectsearchButton(){
         await this.clickOnSearchbtn.click();
     }
-
-
+    async clickOnAssignTab(){
+        await this.assignLeaveTab.click();
+    }
+    async clickOnAssignButton(){
+        await this.assignButton.click();
+    }
+    async selectLeaveType11(){
+        await this.assignLeaveType.click();
+        await this.selectLeaveType1.click();
+    }
+   async clickOnMyLeave(){
+    await this.myLeaveTab.click();
+   }
 }
