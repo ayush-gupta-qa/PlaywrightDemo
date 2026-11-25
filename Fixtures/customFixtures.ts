@@ -5,6 +5,7 @@ import { PIMpage } from '../Pages/PIMpage';
 import { Leave } from '../Pages/Leavepage';
 import { Leavepage1 } from '../Pages/Leavepage1';
 import { Timesheetpage } from '../Pages/Timesheetpage';
+import { Recruitmentpage } from '../Pages/Recruitmentpage';
 
 
 type MyFixtures = {
@@ -14,6 +15,7 @@ type MyFixtures = {
   leavePage: Leave;
   leavePage1:Leavepage1;
   timesheetpage:Timesheetpage;
+  recruitmentpage:Recruitmentpage;
   dashboardInit: void;
 };
 
@@ -50,6 +52,9 @@ export const test = baseTest.extend<MyFixtures>({
   },
   timesheetpage:async({page},use)=>{
     await use(new Timesheetpage(page));
+  },
+  recruitmentpage:async({page},use)=>{
+    await use(new Recruitmentpage(page));
   },
 });
 
