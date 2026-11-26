@@ -54,6 +54,7 @@ test.describe('Timesheet module', () => {
         await test.step('TC02 - Search employee in Timesheet', async () => {
 
             await timesheetPage.enterEmployeeName('a');
+            await page.waitForTimeout(3000);
 
             console.log('Employee name entered successfully');
         });
@@ -64,7 +65,18 @@ test.describe('Timesheet module', () => {
             await timesheetPage.clickView();
 
             console.log('View button clicked successfully');
+            await timesheetPage.clickonCreateTime();
+            await timesheetPage.ClickOnTimeEdit();
+            
         });
+        await test.step('TC04-Edit Time for Employee',async()=>{
+            await timesheetPage.selectProject('a','ACME Ltd - ACME Ltd');
+            await timesheetPage.selectTheActivity('Administration');
+            await timesheetPage.editMondayTiming('11:30');
+            await timesheetPage.clickOnAddButton();
+
+        })
+
 
     });
 
