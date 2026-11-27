@@ -6,6 +6,7 @@ import { Leave } from '../Pages/Leavepage';
 import { Leavepage1 } from '../Pages/Leavepage1';
 import { Timesheetpage } from '../Pages/Timesheetpage';
 import { Recruitmentpage } from '../Pages/Recruitmentpage';
+import { MyInfopage } from '../Pages/MyInfopage';
 
 
 type MyFixtures = {
@@ -16,6 +17,7 @@ type MyFixtures = {
   leavePage1:Leavepage1;
   timesheetpage:Timesheetpage;
   recruitmentpage:Recruitmentpage;
+  myinfopage: MyInfopage;
   dashboardInit: void;
 };
 
@@ -55,6 +57,9 @@ export const test = baseTest.extend<MyFixtures>({
   },
   recruitmentpage:async({page},use)=>{
     await use(new Recruitmentpage(page));
+  },
+  myinfopage:async({page},use)=>{
+    await use(new MyInfopage(page));
   },
 });
 
